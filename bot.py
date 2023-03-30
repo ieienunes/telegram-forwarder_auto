@@ -15,7 +15,6 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
-from bs4 import BeautifulSoup
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -40,16 +39,11 @@ except Exception as ap:
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
-    # Remove as tags HTML da mensagem
-    soup = BeautifulSoup(event.message.message, 'html.parser')
-    message = soup.get_text()
-    
-    # Encaminha a mensagem para os canais especificados em TO
     for i in TO:
         try:
             await BotzHubUser.send_message(
                 i,
-                message
+                event.message
             )
         except Exception as e:
             print(e)
