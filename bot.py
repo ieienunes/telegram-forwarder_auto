@@ -15,6 +15,7 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
+import re
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -41,10 +42,18 @@ except Exception as ap:
 async def sender_bH(event):
     for i in TO:
         try:
-            await BotzHubUser.send_message(
-                i,
-                event.message
-            )
+            message = await event.get_reply_message()
+            input_msg = await BotzHubUser.input(f"Digite a mensagem para enviar para {i}:")
+            msg = input_msg.stringify().replace('message=', '')
+            
+            # Remover links da mensagem
+            msg = re.sub(r'http\S+', '', msg, flags=re.MULTILINE)
+            
+            if message:
+                msg = msg + f"\n\n{message.sender.first_name}: {message.text}"
+            edited = await BotzHubUser.input(f"Editar mensagem para {i}: {msg}")
+            edited = edited.stringify().replace('message=', '')
+            await BotzHubUser.send_message(i, edited)
         except Exception as e:
             print(e)
 
