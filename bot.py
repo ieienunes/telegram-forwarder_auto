@@ -15,7 +15,7 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
-import re
+from urlextract import URLExtract
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -38,22 +38,22 @@ except Exception as ap:
     print(f"ERROR - {ap}")
     exit(1)
 
+extractor = URLExtract()
+
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
+    # Remove os links da mensagem usando a biblioteca urlextract
+    links = extractor.find_urls(event.message.message)
+    for link in links:
+        event.message.message = event.message.message.replace(link, '')
+    
+    # Encaminha a mensagem para os canais especificados em TO
     for i in TO:
         try:
-            message = await event.get_reply_message()
-            input_msg = await BotzHubUser.input(f"Digite a mensagem para enviar para {i}:")
-            msg = input_msg.stringify().replace('message=', '')
-            
-            # Remover links da mensagem
-            msg = re.sub(r'http\S+', '', msg, flags=re.MULTILINE)
-            
-            if message:
-                msg = msg + f"\n\n{message.sender.first_name}: {message.text}"
-            edited = await BotzHubUser.input(f"Editar mensagem para {i}: {msg}")
-            edited = edited.stringify().replace('message=', '')
-            await BotzHubUser.send_message(i, edited)
+            await BotzHubUser.send_message(
+                i,
+                event.message
+            )
         except Exception as e:
             print(e)
 
