@@ -2,7 +2,7 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
-import re
+from bs4 import BeautifulSoup
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -27,17 +27,17 @@ except Exception as ap:
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
-    # Encontre a mensagem na qual você deseja substituir o link
-    message = event.message.message
-
-    # Substitua "APOSTE AQUI" pelo link desejado
-    link = "https://bit.ly/jogar_agoraa"
-    message_with_link = re.sub("APOSTE AQUI", f'<a href="{link}">APOSTE AQUI</a>', message)
-
-    # Encaminhe a mensagem com o link para todos os chats TO
     for i in TO:
         try:
-            await BotzHubUser.send_message(i, message_with_link)
+            message = event.message
+            if message.web_preview and message.text:
+                # Find and replace the link in the message
+                soup = BeautifulSoup(message.text, 'html.parser')
+                link = soup.find('a')
+                if link:
+                    link['href'] = 'https://bit.ly/jogar_agoraa'  # Replace the link here
+                    message.text = str(soup)
+            await BotzHubUser.send_message(i, message)
         except Exception as e:
             print(e)
 
