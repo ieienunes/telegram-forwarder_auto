@@ -24,18 +24,24 @@ except Exception as ap:
     print(f"ERROR - {ap}")
     exit(1)
 
+import re
+from urlextract import URLExtract
+
+extractor = URLExtract()
+
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
     for i in TO:
         try:
-            # substituir o link na mensagem, se houver
-            if event.message.entities:
-                for entity in event.message.entities:
-                    if entity.url:
-                        old_link = entity.url
-                        new_link = "https://fwd.cx/lmBBuPRNuDaQ" # substituir pelo novo link desejado
-                        event.message.message = event.message.message.replace(old_link, new_link)
-                        
+            # extrair links da mensagem
+            links = extractor.find_urls(event.message.message)
+            
+            # substituir o link antigo pelo novo
+            for link in links:
+                if "https://fwd.cx/HMY5zeG8hZYa" in link: # substituir pelo link antigo desejado
+                    new_link = "https://fwd.cx/lmBBuPRNuDaQ" # substituir pelo novo link desejado
+                    event.message.message = event.message.message.replace(link, new_link)
+            
             # enviar a mensagem com o link substituído
             await BotzHubUser.send_message(
                 i,
