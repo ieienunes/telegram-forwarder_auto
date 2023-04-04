@@ -1,21 +1,7 @@
-#    Copyright (c) 2021 Ayush
-#    
-#    This program is free software: you can redistribute it and/or modify  
-#    it under the terms of the GNU General Public License as published by  
-#    the Free Software Foundation, version 3.
-# 
-#    This program is distributed in the hope that it will be useful, but 
-#    WITHOUT ANY WARRANTY; without even the implied warranty of 
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
-#    General Public License for more details.
-# 
-#    License can be found in < https://github.com/Ayush7445/telegram-auto_forwarder/blob/main/License > .
-
 from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
-from telethon.tl.types import MessageEntityUrl
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -40,18 +26,20 @@ except Exception as ap:
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
-    new_message = event.message
-    if new_message.entities:
-        for entity in new_message.entities:
-            if isinstance(entity, MessageEntityUrl):
-                old_link = entity.url
-                new_link = "https://fwd.cx/lmBBuPRNuDaQ"  # Substitua pelo seu novo link desejado
-                new_message.text = new_message.text.replace(old_link, new_link)
     for i in TO:
         try:
+            # substituir o link na mensagem, se houver
+            if event.message.entities:
+                for entity in event.message.entities:
+                    if entity.url:
+                        old_link = entity.url
+                        new_link = "https://fwd.cx/lmBBuPRNuDaQ" # substituir pelo novo link desejado
+                        event.message.message = event.message.message.replace(old_link, new_link)
+                        
+            # enviar a mensagem com o link substituído
             await BotzHubUser.send_message(
                 i,
-                new_message
+                event.message
             )
         except Exception as e:
             print(e)
