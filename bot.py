@@ -21,11 +21,11 @@ logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s'
 print("Starting...")
 
 # Basics
-APP_ID = config("24697766", default=None, cast=int)
-API_HASH = config("1ce7de6596c962c77701f642ac6703c5", default=None)
-SESSION = config("1AZWarzUBuxWwA4ptjBQjYXPYnY5El83KkF7Nwml8sLnDIu_pe-hR-Slm3YNSR8NBOMKlpT0gdNTJDV69wI3_m7vs5CFeFw3ugi4PVj-15QHpdR4QycQefeRPdUOXz-zQtf5puQXF2LP4u0VS8CkVNG-2P2gLjaoJJMthrsA08Jnhp3eKI5NPo2b-OB9PYEdrW57ZN8sFgMWD-oXwtF1HdHgt4PZ67BJPTAq63oHE63GpuF3gULMIAd2uQXTAtqeAbkcLDXX_dJP2Gz99u1e6F225eArKBrNxdA2HF2kX-k_32bMloJliPy0BeOE8vQgdNUYkr9RmO0mt3tjiX0o71wjSN-MgMI0=")
-FROM_ = config("-1001691258104")
-TO_ = config("-1001513912951")
+APP_ID = config("APP_ID", default=None, cast=int)
+API_HASH = config("API_HASH", default=None)
+SESSION = config("SESSION")
+FROM_ = config("FROM_CHANNEL")
+TO_ = config("TO_CHANNEL")
 
 FROM = [int(i) for i in FROM_.split()]
 TO = [int(i) for i in TO_.split()]
