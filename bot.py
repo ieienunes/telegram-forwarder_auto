@@ -1,3 +1,16 @@
+#    Copyright (c) 2021 Ayush
+#    
+#    This program is free software: you can redistribute it and/or modify  
+#    it under the terms of the GNU General Public License as published by  
+#    the Free Software Foundation, version 3.
+# 
+#    This program is distributed in the hope that it will be useful, but 
+#    WITHOUT ANY WARRANTY; without even the implied warranty of 
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+#    General Public License for more details.
+# 
+#    License can be found in < https://github.com/Ayush7445/telegram-auto_forwarder/blob/main/License > .
+
 from telethon import TelegramClient, events
 from decouple import config
 import logging
@@ -25,13 +38,13 @@ except Exception as ap:
     exit(1)
 
 # Define a mensagem personalizada aqui:
-MENSAGEM_PERSONALIZADA = "https://fwd.cx/lmBBuPRNuDaQ"
+MENSAGEM_PERSONALIZADA = "https://bit.ly/jogar_agoraa"
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
     mensagem = event.message
     for i in TO:
-        mensagem_completa = f"{MENSAGEM_PERSONALIZADA}\n\n{mensagem.message}"
+        mensagem_completa = f"{mensagem}\n\n{MENSAGEM_PERSONALIZADA}"
         try:
             await BotzHubUser.send_message(
                 i,
