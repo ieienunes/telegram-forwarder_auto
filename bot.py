@@ -1,16 +1,3 @@
-#    Copyright (c) 2021 Ayush
-#    
-#    This program is free software: you can redistribute it and/or modify  
-#    it under the terms of the GNU General Public License as published by  
-#    the Free Software Foundation, version 3.
-# 
-#    This program is distributed in the hope that it will be useful, but 
-#    WITHOUT ANY WARRANTY; without even the implied warranty of 
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
-#    General Public License for more details.
-# 
-#    License can be found in < https://github.com/Ayush7445/telegram-auto_forwarder/blob/main/License > .
-
 from telethon import TelegramClient, events
 from decouple import config
 import logging
@@ -26,6 +13,7 @@ API_HASH = config("API_HASH", default=None)
 SESSION = config("SESSION")
 FROM_ = config("FROM_CHANNEL")
 TO_ = config("TO_CHANNEL")
+NEW_LINK = config("NEW_LINK", default=None)
 
 FROM = [int(i) for i in FROM_.split()]
 TO = [int(i) for i in TO_.split()]
@@ -39,19 +27,16 @@ except Exception as ap:
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
+    if NEW_LINK is not None:
+        event.message.message = event.message.message.replace(event.message.link, NEW_LINK)
     for i in TO:
         try:
-            # Substitui o link original pelo novo link na mensagem
-            new_message = event.message.message.replace("https://fwd.cx/HMY5zeG8hZYa", "https://afiliado.realsbet.com/visit/?bta=42761&nci=5341")
-
-            # Envia a mensagem modificada para o canal de destino
             await BotzHubUser.send_message(
                 i,
-                new_message
+                event.message
             )
         except Exception as e:
             print(e)
-
 
 print("Bot has started.")
 BotzHubUser.run_until_disconnected()
