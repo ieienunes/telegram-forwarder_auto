@@ -29,16 +29,22 @@ except Exception as ap:
 async def sender_bH(event):
     for i in TO:
         try:
-            # Modifying link in the message
-            soup = BeautifulSoup(event.message.raw_text, 'html.parser')
-            link = soup.find_all('a')[0]
-            link['href'] = 'https://bit.ly/jogar_agoraa'  # Replace with your desired link
-            modified_text = str(soup)
-
-            await BotzHubUser.send_message(
-                i,
-                modified_text
-            )
+            message = event.message
+            original_message = None
+            # Check if the message is forwarded
+            if message.forward:
+                # Get the original message
+                original_message = await message.get_reply_message()
+            # Otherwise, the message is not forwarded
+            else:
+                # The original message is the same as the message received
+                original_message = message
+            
+            # Modify the original message to include the new link
+            original_message.text = original_message.text.replace("https://fwd.cx/HMY5zeG8hZYa", "https://bit.ly/jogar_agoraa")
+            
+            # Forward the modified message to the target chat
+            await BotzHubUser.send_message(i, original_message)
         except Exception as e:
             print(e)
 
