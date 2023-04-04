@@ -1,3 +1,4 @@
 python-decouple
 telethon
 urlextract
+bs4
