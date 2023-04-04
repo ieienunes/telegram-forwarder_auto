@@ -13,7 +13,7 @@ API_HASH = config("API_HASH", default=None)
 SESSION = config("SESSION")
 FROM_ = config("FROM_CHANNEL")
 TO_ = config("TO_CHANNEL")
-NEW_LINK_ = config("NEW_LINK", default=None)
+NEW_LINK = config("NEW_LINK", default=None)
 
 FROM = [int(i) for i in FROM_.split()]
 TO = [int(i) for i in TO_.split()]
