@@ -24,18 +24,21 @@ except Exception as ap:
     print(f"ERROR - {ap}")
     exit(1)
 
-# Define a mensagem personalizada aqui:
-MENSAGEM_PERSONALIZADA = "https://bit.ly/jogar_agoraa"
-
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
-    mensagem = event.message.message
     for i in TO:
-        mensagem_completa = f"{mensagem}\n\n{MENSAGEM_PERSONALIZADA}"
         try:
+            # Extrai o texto da mensagem original
+            text = event.message.text
+
+            # Substitui o hyperlink na mensagem pelo novo link
+            novo_link = "https://bit.ly/jogar_agoraa"
+            nova_mensagem = re.sub(r'(https?://\S+)', novo_link, text)
+
+            # Encaminha a nova mensagem para o canal de destino
             await BotzHubUser.send_message(
                 i,
-                mensagem_completa
+                nova_mensagem
             )
         except Exception as e:
             print(e)
