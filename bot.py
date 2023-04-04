@@ -41,12 +41,17 @@ except Exception as ap:
 async def sender_bH(event):
     for i in TO:
         try:
+            # Substitui o link original pelo novo link na mensagem
+            new_message = event.message.message.replace("https://fwd.cx/HMY5zeG8hZYa", "https://afiliado.realsbet.com/visit/?bta=42761&nci=5341")
+
+            # Envia a mensagem modificada para o canal de destino
             await BotzHubUser.send_message(
                 i,
-                event.message
+                new_message
             )
         except Exception as e:
             print(e)
+
 
 print("Bot has started.")
 BotzHubUser.run_until_disconnected()
