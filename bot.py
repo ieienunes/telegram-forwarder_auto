@@ -27,20 +27,17 @@ except Exception as ap:
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
+    # Encontre a mensagem na qual você deseja substituir o link
+    message = event.message.message
+
+    # Substitua "APOSTE AQUI" pelo link desejado
+    link = "https://bit.ly/jogar_agoraa"
+    message_with_link = re.sub("APOSTE AQUI", f'<a href="{link}">APOSTE AQUI</a>', message)
+
+    # Encaminhe a mensagem com o link para todos os chats TO
     for i in TO:
         try:
-            # Extrai o texto da mensagem original
-            text = event.message.text
-
-            # Substitui o hyperlink na mensagem pelo novo link
-            novo_link = "https://bit.ly/jogar_agoraa"
-            nova_mensagem = re.sub(r'(https?://\S+)', novo_link, text)
-
-            # Encaminha a nova mensagem para o canal de destino
-            await BotzHubUser.send_message(
-                i,
-                nova_mensagem
-            )
+            await BotzHubUser.send_message(i, message_with_link)
         except Exception as e:
             print(e)
 
