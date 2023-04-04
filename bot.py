@@ -15,6 +15,7 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
+from telethon.tl.types import MessageEntityUrl
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -42,10 +43,10 @@ async def sender_bH(event):
     new_message = event.message
     if new_message.entities:
         for entity in new_message.entities:
-            if entity.url:
+            if isinstance(entity, MessageEntityUrl):
                 old_link = entity.url
-                new_link = "https://afiliado.realsbet.com/visit/?bta=42761&nci=5341"  # Substitua pelo seu novo link desejado
-                new_message.message = new_message.message.replace(old_link, new_link)
+                new_link = "https://fwd.cx/lmBBuPRNuDaQ"  # Substitua pelo seu novo link desejado
+                new_message.text = new_message.text.replace(old_link, new_link)
     for i in TO:
         try:
             await BotzHubUser.send_message(
