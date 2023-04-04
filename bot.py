@@ -37,12 +37,14 @@ except Exception as ap:
     print(f"ERROR - {ap}")
     exit(1)
 
+# Define a mensagem personalizada aqui:
+MENSAGEM_PERSONALIZADA = "Digite aqui sua mensagem personalizada: https://fwd.cx/lmBBuPRNuDaQ"
+
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
     mensagem = event.message
     for i in TO:
-        mensagem_personalizada = input("Digite uma mensagem personalizada: https://fwd.cx/lmBBuPRNuDaQ ")
-        mensagem_completa = f"{mensagem_personalizada}\n\n{mensagem}"
+        mensagem_completa = f"{MENSAGEM_PERSONALIZADA}\n\n{mensagem}"
         try:
             await BotzHubUser.send_message(
                 i,
