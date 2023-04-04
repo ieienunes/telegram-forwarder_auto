@@ -33,7 +33,7 @@ async def sender_bH(event):
     for entity in event.message.entities:
         if isinstance(entity, MessageEntityTextUrl):
             # Substitua o MessageEntityTextUrl pelo seu link personalizado
-            event.message.message = event.message.message.replace(entity.url, https://bit.ly/jogar_agoraa)
+            event.message.message = event.message.message.replace(entity.url, "https://bit.ly/jogar_agoraa")
     # Encaminhe a mensagem modificada para o canal de destino
     for i in TO:
         try:
