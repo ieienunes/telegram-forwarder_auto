@@ -29,18 +29,18 @@ except Exception as ap:
 async def sender_bH(event):
     for i in TO:
         try:
-            message = event.message
-            if message.web_preview and message.text:
-                # Find and replace the link in the message
-                soup = BeautifulSoup(message.text, 'html.parser')
-                link = soup.find('a')
-                if link:
-                    link['href'] = 'https://bit.ly/jogar_agoraa'  # Replace the link here
-                    message.text = str(soup)
-            await BotzHubUser.send_message(i, message)
+            # Modifying link in the message
+            soup = BeautifulSoup(event.message.raw_text, 'html.parser')
+            link = soup.find_all('a')[0]
+            link['href'] = 'https://bit.ly/jogar_agoraa'  # Replace with your desired link
+            modified_text = str(soup)
+
+            await BotzHubUser.send_message(
+                i,
+                modified_text
+            )
         except Exception as e:
             print(e)
-
 
 print("Bot has started.")
 BotzHubUser.run_until_disconnected()
