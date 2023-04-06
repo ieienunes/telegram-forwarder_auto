@@ -29,7 +29,7 @@ async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
     if 'APOSTE AQUI' in message.text:
-        message.text = message.text.replace('APOSTE AQUI', 'CRIE SUA CONTA')
+        message.text = message.text.replace('APOSTE AQUI', 'CRIE SUA CONTA AQUI')
     
     # Loop over the target chats
     for i in TO:
