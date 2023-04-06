@@ -28,8 +28,20 @@ except Exception as ap:
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if 'ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa' in message.text:
-        message.text = message.text.replace('ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa', 'https://cutt.ly/criar_conta_bbrbet')
+    if 'LINKS:' in message.text:
+        message.text = message.text.replace('LINKS:', ' ')
+        
+    if 'Computador' in message.text:
+        message.text = message.text.replace('Computador', ' ')
+    if 'Celular' in message.text:
+        message.text = message.text.replace('Celular', 'CRIE SUA CONTA AQUI')
+    if '📱' in message.text:
+        message.text = message.text.replace('📱', ' ')
+    if '💻' in message.text:
+        message.text = message.text.replace('💻', ' ')
+    if '🔗' in message.text:
+        message.text = message.text.replace('🔗', ' ')
+    
     
     # Loop over the target chats
     for i in TO:
@@ -45,12 +57,13 @@ async def sender_bH(event):
                 original_message = message
             
             # Modify the original message to include the new link
-            original_message.text = original_message.text.replace("https://cutt.ly/BBRbet", "https://cutt.ly/criar_conta_bbrbet")
+            original_message.text = original_message.text.replace("https://realsbet.com/casino/game/1293724", "https://afiliado.realsbet.com/visit/?bta=42761&brand=realsbet")
             
             # Forward the modified message to the target chat
             await BotzHubUser.send_message(i, original_message)
         except Exception as e:
             print(e)
+
 
 print("BOT INICIADO.")
 BotzHubUser.run_until_disconnected()
