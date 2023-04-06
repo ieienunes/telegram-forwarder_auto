@@ -2,7 +2,6 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
-from bs4 import BeautifulSoup
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
@@ -27,9 +26,14 @@ except Exception as ap:
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
+    message = event.message
+    # substituir textos específicos antes de encaminhar a mensagem
+    if 'APOSTE AQUI' in message.text:
+        message.text = message.text.replace('APOSTE AQUI', 'CRIE SUA CONTA')
+    
+    # Loop over the target chats
     for i in TO:
         try:
-            message = event.message
             original_message = None
             # Check if the message is forwarded
             if message.forward:
@@ -41,7 +45,7 @@ async def sender_bH(event):
                 original_message = message
             
             # Modify the original message to include the new link
-            original_message.text = original_message.text.replace("https://cutt.ly/BBRbet", "https://bit.ly/jogar_agoraa")
+            original_message.text = original_message.text.replace("https://fwd.cx/HMY5zeG8hZYa", "https://afiliado.realsbet.com/visit/?bta=42761&brand=realsbet")
             
             # Forward the modified message to the target chat
             await BotzHubUser.send_message(i, original_message)
