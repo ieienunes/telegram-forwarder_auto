@@ -28,8 +28,8 @@ except Exception as ap:
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if 'Penalty Shoot-Out' in message.text:
-        message.text = message.text.replace('Penalty Shoot-Out', 'CRIE SUA CONTA AQUI')
+    if 'BBRBET MINES' in message.text:
+        message.text = message.text.replace('BBRBET MINES', 'CRIE SUA CONTA AQUI')
         
     if 'Computador' in message.text:
         message.text = message.text.replace('Computador', ' ')
