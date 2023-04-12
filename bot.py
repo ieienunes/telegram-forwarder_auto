@@ -42,6 +42,8 @@ async def sender_bH(event):
         message.text = message.text.replace('ENTRE AQUI', ' ')
     if '💻' in message.text:
         message.text = message.text.replace('💻', ' ')
+    if 'ANALIZANDO POSSÍVEL SINAL🎲' in message.text:
+        message.text = message.text.replace('ANALIZANDO POSSÍVEL SINAL🎲', '')
     
     
     # Loop over the target chats
