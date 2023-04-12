@@ -31,17 +31,17 @@ except Exception as ap:
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if '✅✅✅GREEN' in message.text:
-        message.text = message.text.replace('✅✅✅GREEN', '✅ GREEN!!! RECEBAAAA🔥')
+    if '🟢🟢Entrada Confirmada🟢🟢' in message.text:
+        message.text = message.text.replace('🟢🟢Entrada Confirmada🟢🟢', '**✅ OPORTUNIDADE IDENTIFICADA**')
         
-    if '🟦 Entrar no Azul\n🟠 Proteção no Empate' in message.text:
-        message.text = message.text.replace('🟦 Entrar no Azul\n🟠 Proteção no Empate', '🔔 **ENTRADA CONFIRMADA** 🔔\n\n🟦 Entrar no Azul\n🟠 Proteção no Empate\n\n[CRIE SUA CONTA AQUI](https://fwd.cx/lmBBuPRNuDaQ)')
-    if '🟥 Entrar no Vermelho\n🟠 Proteção no Empate' in message.text:
-        message.text = message.text.replace('🟥 Entrar no Vermelho\n🟠 Proteção no Empate', '🔔 **ENTRADA CONFIRMADA** 🔔\n\n🟥 Entrar no Vermelho\n🟠 Proteção no Empate\n\n[CRIE SUA CONTA AQUI](https://fwd.cx/lmBBuPRNuDaQ)')
-    if 'ENTRE AQUI' in message.text:
-        message.text = message.text.replace('ENTRE AQUI', ' ')
-    if '💻' in message.text:
-        message.text = message.text.replace('💻', ' ')
+    if '🐯Jogo: Fortune Tiger' in message.text:
+        message.text = message.text.replace('🐯Jogo: Fortune Tiger', '🐭Jogo: [Fortune Mouse](https://www.bbrbet.com/?p=lnkl32RW&lang=pt) ')
+    if '➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa' in message.text:
+        message.text = message.text.replace('➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa', '👉🏻[CRIE SUA CONTA AQUI](https://cutt.ly/criar_conta_bbrbet)👈🏻')
+    if '✅✅✅ GREEN ✅✅✅' in message.text:
+        message.text = message.text.replace('✅✅✅ GREEN ✅✅✅', '✅ GREEN!!!')
+    if '🟢' in message.text:
+        message.text = message.text.replace('🟢', '🔵')
     if 'ANALIZANDO POSSÍVEL SINAL🎲' in message.text:
         message.text = message.text.replace('ANALIZANDO POSSÍVEL SINAL🎲', '')
     
