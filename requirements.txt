@@ -3,3 +3,5 @@ telethon
 urlextract
 bs4
 emoji
+markdown
+asyncio
