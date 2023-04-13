@@ -31,19 +31,24 @@ except Exception as ap:
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if '🟢🟢Entrada Confirmada🟢🟢' in message.text:
-        message.text = message.text.replace('🟢🟢Entrada Confirmada🟢🟢', '**✅ OPORTUNIDADE IDENTIFICADA**')
+    if 'APOSTE AQUI' in message.text:
+        message.text = message.text.replace('APOSTE AQUI', 'CRIE SUA CONTA AQUI')
         
-    if '🐯Jogo: Fortune Tiger' in message.text:
-        message.text = message.text.replace('🐯Jogo: Fortune Tiger', '🐭Jogo: [Fortune Mouse](https://www.bbrbet.com/?p=lnkl32RW&lang=pt) ')
-    if '➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa' in message.text:
-        message.text = message.text.replace('➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa', '👉🏻[CRIE SUA CONTA AQUI](https://cutt.ly/criar_conta_bbrbet)👈🏻')
+ 
     if '✅✅✅ GREEN ✅✅✅' in message.text:
-        message.text = message.text.replace('✅✅✅ GREEN ✅✅✅', '✅ GREEN!!!')
-    if '🟢' in message.text:
-        message.text = message.text.replace('🟢', '🔵')
-    if 'ANALIZANDO POSSÍVEL SINAL🎲' in message.text:
-        message.text = message.text.replace('ANALIZANDO POSSÍVEL SINAL🎲', '')
+        message.text = message.text.replace('✅✅✅ GREEN ✅✅✅', '✅✅✅ GREEN!!! ✅✅✅')
+    if '💣' in message.text:
+        message.text = message.text.replace('💣', '🟦')
+    if 'Aposte com: 3 🟦' in message.text:
+        message.text = message.text.replace('Aposte com: 3 🟦', 'Aposte com: 3 bombas')
+    if 'Aposte com: 4 🟦' in message.text:
+        message.text = message.text.replace('Aposte com: 4 🟦', 'Aposte com: 3 bombas')
+    if 'Aposte com: 5 🟦' in message.text:
+        message.text = message.text.replace('Aposte com: 5 🟦', 'Aposte com: 3 bombas')
+    if 'Aposte com: 6 🟦' in message.text:
+        message.text = message.text.replace('Aposte com: 6 🟦', 'Aposte com: 3 bombas')
+    if 'Aposte com: 7 🟦' in message.text:
+        message.text = message.text.replace('Aposte com: 7 🟦', 'Aposte com: 3 bombas')
     
     
     # Loop over the target chats
