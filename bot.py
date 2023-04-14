@@ -31,24 +31,19 @@ except Exception as ap:
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if 'APOSTE AQUI' in message.text:
-        message.text = message.text.replace('APOSTE AQUI', 'CRIE SUA CONTA AQUI')
+    if '✅✅✅GREEN' in message.text:
+        message.text = message.text.replace('✅✅✅GREEN', '✅ GREEN!!! RECEBAAAA🔥')
         
- 
-    if '✅✅✅ GREEN ✅✅✅' in message.text:
-        message.text = message.text.replace('✅✅✅ GREEN ✅✅✅', '✅✅✅ GREEN!!! ✅✅✅')
-    if '💣' in message.text:
-        message.text = message.text.replace('💣', '🟦')
-    if 'Aposte com: 3 🟦' in message.text:
-        message.text = message.text.replace('Aposte com: 3 🟦', 'Aposte com: 3 bombas')
-    if 'Aposte com: 4 🟦' in message.text:
-        message.text = message.text.replace('Aposte com: 4 🟦', 'Aposte com: 3 bombas')
-    if 'Aposte com: 5 🟦' in message.text:
-        message.text = message.text.replace('Aposte com: 5 🟦', 'Aposte com: 3 bombas')
-    if 'Aposte com: 6 🟦' in message.text:
-        message.text = message.text.replace('Aposte com: 6 🟦', 'Aposte com: 3 bombas')
-    if 'Aposte com: 7 🟦' in message.text:
-        message.text = message.text.replace('Aposte com: 7 🟦', 'Aposte com: 3 bombas')
+    if '🟦 Entrar no Azul\n🟠 Proteção no Empate' in message.text:
+        message.text = message.text.replace('🟦 Entrar no Azul\n🟠 Proteção no Empate', '🔔 **ENTRADA CONFIRMADA** 🔔\n\n🟦 Entrar no Azul\n🟠 Proteção no Empate\n\n[CRIE SUA CONTA AQUI](https://fwd.cx/lmBBuPRNuDaQ)')
+    if '🟥 Entrar no Vermelho\n🟠 Proteção no Empate' in message.text:
+        message.text = message.text.replace('🟥 Entrar no Vermelho\n🟠 Proteção no Empate', '🔔 **ENTRADA CONFIRMADA** 🔔\n\n🟥 Entrar no Vermelho\n🟠 Proteção no Empate\n\n[CRIE SUA CONTA AQUI](https://fwd.cx/lmBBuPRNuDaQ)')
+    if 'ENTRE AQUI' in message.text:
+        message.text = message.text.replace('ENTRE AQUI', ' ')
+    if '💻' in message.text:
+        message.text = message.text.replace('💻', ' ')
+    if 'ANALIZANDO POSSÍVEL SINAL🎲' in message.text:
+        message.text = message.text.replace('ANALIZANDO POSSÍVEL SINAL🎲', 'ANALIZANDO POSSÍVEL SINAL🎲\n[JOGUE AQUI](https://realsbet.com/live-casino/game/1402430)')
     
     
     # Loop over the target chats
