@@ -27,23 +27,22 @@ except Exception as ap:
     print(f"ERROR - {ap}")
     exit(1)
 
-@BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
+@BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM, pattern=r'(?i)(?!.*ALERTA, POSSÍVEL ENTRADA)'))
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if '✅✅✅GREEN' in message.text:
-        message.text = message.text.replace('✅✅✅GREEN', '✅ GREEN!!! RECEBAAAA🔥')
+    if '🔗 LINKS:' in message.text:
+        message.text = message.text.replace('🔗 LINKS:', '        [CRIE SUA CONTA AQUI](https://fwd.cx/lmBBuPRNuDaQ)')
         
-    if '🟦 Entrar no Azul\n🟠 Proteção no Empate' in message.text:
-        message.text = message.text.replace('🟦 Entrar no Azul\n🟠 Proteção no Empate', '🔔 **ENTRADA CONFIRMADA** 🔔\n\n🟦 Entrar no Azul\n🟠 Proteção no Empate\n\n[CRIE SUA CONTA AQUI](https://fwd.cx/lmBBuPRNuDaQ)')
-    if '🟥 Entrar no Vermelho\n🟠 Proteção no Empate' in message.text:
-        message.text = message.text.replace('🟥 Entrar no Vermelho\n🟠 Proteção no Empate', '🔔 **ENTRADA CONFIRMADA** 🔔\n\n🟥 Entrar no Vermelho\n🟠 Proteção no Empate\n\n[CRIE SUA CONTA AQUI](https://fwd.cx/lmBBuPRNuDaQ)')
-    if 'ENTRE AQUI' in message.text:
-        message.text = message.text.replace('ENTRE AQUI', ' ')
     if '💻' in message.text:
         message.text = message.text.replace('💻', ' ')
-    if 'ANALIZANDO POSSÍVEL SINAL🎲' in message.text:
-        message.text = message.text.replace('ANALIZANDO POSSÍVEL SINAL🎲', 'ANALIZANDO POSSÍVEL SINAL🎲\n[JOGUE AQUI](https://realsbet.com/live-casino/game/1402430)')
+    if '📱' in message.text:
+        message.text = message.text.replace('📱', ' ')
+    if 'Computador' in message.text:
+        message.text = message.text.replace('Computador', ' ')
+    if 'Celular' in message.text:
+        message.text = message.text.replace('Celular', ' ')
+    
     
     
     # Loop over the target chats
@@ -60,7 +59,7 @@ async def sender_bH(event):
                 original_message = message
             
             # Modify the original message to include the new link
-            original_message.text = original_message.text.replace("https://fwd.cx/HMY5zeG8hZYa", "https://fwd.cx/lmBBuPRNuDaQ")
+            original_message.text = original_message.text.replace("https://realsbet.com/casino/game/1293724", "https://fwd.cx/lmBBuPRNuDaQ")
             
             # Forward the modified message to the target chat
             await BotzHubUser.send_message(i, original_message)
