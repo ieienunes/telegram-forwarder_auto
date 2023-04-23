@@ -31,11 +31,11 @@ except Exception as ap:
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if 'OPORTUNIDADE IDENTIFICADA' in message.text:
-        message.text = message.text.replace('OPORTUNIDADE IDENTIFICADA', '**OPORTUNIDADE IDENTIFICADA**')
+    if 'Penalty Shoot-Out' in message.text:
+        message.text = message.text.replace('Penalty Shoot-Out', 'JOGUE AQUI')
         
-    if '' in message.text:
-        message.text = message.text.replace('', '')
+    if '✅ OPORTUNIDADE IDENTIFICADA' in message.text:
+        message.text = message.text.replace('✅ OPORTUNIDADE IDENTIFICADA', '**✅ OPORTUNIDADE IDENTIFICADA**')
     if '' in message.text:
         message.text = message.text.replace('', '')
     if '' in message.text:
@@ -59,7 +59,7 @@ async def sender_bH(event):
                 original_message = message
             
             # Modify the original message to include the new link
-            original_message.text = original_message.text.replace("https://fwd.cx/HMY5zeG8hZYa", "https://fwd.cx/lmBBuPRNuDaQ")
+            original_message.text = original_message.text.replace("https://realsbet.com/casino/game/1292733", "https://estrelabet.com/ptb/games/casino/detail/normal/9611")
             
             # Forward the modified message to the target chat
             await BotzHubUser.send_message(i, original_message)
