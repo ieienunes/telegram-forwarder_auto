@@ -32,10 +32,10 @@ async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
     if 'Penalty Shoot-Out' in message.text:
-        message.text = message.text.replace('Penalty Shoot-Out', 'JOGUE AQUI')
+        message.text = message.text.replace('Penalty Shoot-Out', 'ROBO VIP')
         
     if '✅ OPORTUNIDADE IDENTIFICADA' in message.text:
-        message.text = message.text.replace('✅ OPORTUNIDADE IDENTIFICADA', '**✅ OPORTUNIDADE IDENTIFICADA**')
+        message.text = message.text.replace('✅ OPORTUNIDADE IDENTIFICADA', '**✅ ENTRADA CONFIRMADA**')
     if '' in message.text:
         message.text = message.text.replace('', '')
     if '' in message.text:
