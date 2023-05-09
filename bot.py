@@ -1,3 +1,16 @@
+#    Copyright (c) 2021 Ayush
+#    
+#    This program is free software: you can redistribute it and/or modify  
+#    it under the terms of the GNU General Public License as published by  
+#    the Free Software Foundation, version 3.
+# 
+#    This program is distributed in the hope that it will be useful, but 
+#    WITHOUT ANY WARRANTY; without even the implied warranty of 
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU 
+#    General Public License for more details.
+# 
+#    License can be found in < https://github.com/Ayush7445/telegram-auto_forwarder/blob/main/License > .
+
 from telethon import TelegramClient, events
 from decouple import config
 import logging
@@ -5,7 +18,7 @@ from telethon.sessions import StringSession
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
-print("ATIVANDO...")
+print("INICIANDO...")
 
 # Basics
 APP_ID = config("APP_ID", default=None, cast=int)
@@ -26,31 +39,14 @@ except Exception as ap:
 
 @BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM))
 async def sender_bH(event):
-    message = event.message
-    # substituir textos específicos antes de encaminhar a mensagem
-    if '➡️  Entre Aqui: https://fwd.cx/HMY5zeG8hZYa' in message.text:
-        message.text = message.text.replace('➡️  Entre Aqui: https://fwd.cx/HMY5zeG8hZYa', '👉🏻[CRIE SUA CONTA AQUI](https://www.bbrbet.com/?p=lnkl32RW&lang=pt)👈🏻')
-
-    # Loop over the target chats
     for i in TO:
         try:
-            original_message = None
-            # Check if the message is forwarded
-            if message.forward:
-                # Get the original message
-                original_message = await message.get_reply_message()
-            # Otherwise, the message is not forwarded
-            else:
-                # The original message is the same as the message received
-                original_message = message
-
-            # Modify the original message to include the new link
-            original_message.text = original_message.text.replace("https://cutt.ly/BBRbet", "https://cutt.ly/criar_conta_bbrbet")
-
-            # Forward the modified message to the target chat
-            await BotzHubUser.send_message(i, original_message)
+            await BotzHubUser.send_message(
+                i,
+                event.message
+            )
         except Exception as e:
             print(e)
 
-print("BOT INICIADO.")
+print("ROBO INICIADO.")
 BotzHubUser.run_until_disconnected()
