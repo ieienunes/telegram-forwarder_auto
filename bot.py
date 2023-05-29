@@ -30,7 +30,10 @@ async def sender_bH(event):
     # substituir textos específicos antes de encaminhar a mensagem
     if '➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa' in message.text:
         message.text = message.text.replace('➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa', '👉🏻[CRIE SUA CONTA AQUI](https://www.bbrbet.com/?p=lnkl32RW&lang=pt)👈🏻')
-
+    if '🟢🟢Entrada Confirmada🟢🟢' in message.text:
+        message.text = message.text.replace('🟢🟢Entrada Confirmada🟢🟢', '*✅ OPORTUNIDADE IDENTIFICADA*')
+        
+        
     # Loop over the target chats
     for i in TO:
         try:
