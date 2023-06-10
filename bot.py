@@ -31,7 +31,7 @@ async def sender_bH(event):
     if '➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa' in message.text:
         message.text = message.text.replace('➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa', '👉🏻[CRIE SUA CONTA](https://www.bbrbet.com/c-zpqVT4UZ?lang=pt)👈🏻')
     if '🟢🟢Entrada Confirmada🟢🟢' in message.text:
-        message.text = message.text.replace('🟢🟢Entrada Confirmada🟢🟢', '✅ ENTRADA CONFIRMADA')
+        message.text = message.text.replace('🟢🟢Entrada Confirmada🟢🟢', '**✅ ENTRADA CONFIRMADA**')
     if '🟢Entrar' in message.text:
         message.text = message.text.replace('🟢Entrar', '🟢 ENTRADA')
     if '⏰ Válido até às' in message.text:
