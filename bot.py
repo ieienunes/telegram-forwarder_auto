@@ -2,13 +2,10 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
-import markdown
-import asyncio
-from telethon.tl.functions.messages import DeleteMessagesRequest
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
-print("INICIANDO...")
+print("ATIVANDO...")
 
 # Basics
 APP_ID = config("APP_ID", default=None, cast=int)
@@ -31,13 +28,9 @@ except Exception as ap:
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if 'JOGUE AQUI' in message.text:
-        message.text = message.text.replace('JOGUE AQUI', 'CRIE SUA CONTA AQUI')
     if '🔔 OPORTUNIDADE IDENTIFICADA 🔔' in message.text:
-        message.text = message.text.replace('🔔 OPORTUNIDADE IDENTIFICADA 🔔', '**🟢🟢Entrada Confirmada🟢🟢**')
-    if '🐯 Fortune Tiger' in message.text:
-        message.text = message.text.replace('🐯 Fortune Tiger', '**🐭 Fortune Mouse**')
-      
+        message.text = message.text.replace('🔔 OPORTUNIDADE IDENTIFICADA 🔔', '**✅OPORTUNIDADE IDENTIFICADA✅**')
+        
         
     # Loop over the target chats
     for i in TO:
