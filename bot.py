@@ -32,7 +32,7 @@ async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
     if 'JOGUE AQUI' in message.text:
-        message.text = message.text.replace('JOGUE AQUI', '👉🏻[CRIE SUA CONTA AQUI](https://www.bbrbet.com/?p=lnkl32RW&lang=pt)👈🏻')
+        message.text = message.text.replace('JOGUE AQUI', 'CRIE SUA CONTA AQUI')
     if '🔔 OPORTUNIDADE IDENTIFICADA 🔔' in message.text:
         message.text = message.text.replace('🔔 OPORTUNIDADE IDENTIFICADA 🔔', '**🟢🟢Entrada Confirmada🟢🟢**')
     if '🐯 Fortune Tiger' in message.text:
