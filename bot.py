@@ -2,10 +2,13 @@ from telethon import TelegramClient, events
 from decouple import config
 import logging
 from telethon.sessions import StringSession
+import markdown
+import asyncio
+from telethon.tl.functions.messages import DeleteMessagesRequest
 
 logging.basicConfig(format='[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s', level=logging.WARNING)
 
-print("ATIVANDO...")
+print("INICIANDO...")
 
 # Basics
 APP_ID = config("APP_ID", default=None, cast=int)
@@ -28,10 +31,12 @@ except Exception as ap:
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if '➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa' in message.text:
-        message.text = message.text.replace('➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa', '👉🏻[CRIE SUA CONTA AQUI](https://www.bbrbet.com/?p=lnkl32RW&lang=pt)👈🏻')
-    if '🟢🟢Entrada Confirmada🟢🟢' in message.text:
-        message.text = message.text.replace('🟢🟢Entrada Confirmada🟢🟢', '**✅ OPORTUNIDADE IDENTIFICADA**')
+    if '🔗 JOGUE AQUI' in message.text:
+        message.text = message.text.replace('🔗 JOGUE AQUI', '👉🏻[CRIE SUA CONTA AQUI](https://www.bbrbet.com/?p=lnkl32RW&lang=pt)👈🏻')
+    if '🔔 OPORTUNIDADE IDENTIFICADA 🔔' in message.text:
+        message.text = message.text.replace('🔔 OPORTUNIDADE IDENTIFICADA 🔔', '**🟢🟢Entrada Confirmada🟢🟢**')
+    if '🐯 Fortune Tiger' in message.text:
+        message.text = message.text.replace('🐯 Fortune Tiger', '**🐭 Fortune Mouse**')
         
         
     # Loop over the target chats
@@ -48,7 +53,7 @@ async def sender_bH(event):
                 original_message = message
 
             # Modify the original message to include the new link
-            original_message.text = original_message.text.replace("https://fwd.cx/lmBBuPRNuDaQ", "https://cutt.ly/criar_conta_bbrbet")
+            original_message.text = original_message.text.replace("https://fwd.cx/lmBBuPRNuDaQ", "https://www.bbrbet.com/?p=lnkl32RW&lang=pt")
 
             # Forward the modified message to the target chat
             await BotzHubUser.send_message(i, original_message)
