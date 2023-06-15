@@ -37,7 +37,8 @@ async def sender_bH(event):
         message.text = message.text.replace('🔔 OPORTUNIDADE IDENTIFICADA 🔔', '**🟢🟢Entrada Confirmada🟢🟢**')
     if '🐯 Fortune Tiger' in message.text:
         message.text = message.text.replace('🐯 Fortune Tiger', '**🐭 Fortune Mouse**')
-        
+    if '⏰ Válido até:' in message.text:
+        message.text = message.text.replace('⏰ Válido até:', 'Finaliza às:')   
         
     # Loop over the target chats
     for i in TO:
