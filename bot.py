@@ -24,7 +24,7 @@ except Exception as ap:
     print(f"ERROR - {ap}")
     exit(1)
 
-@BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM, pattern=r'(?i)(?!.*🔵🔵 Entrada Finalizada 🔵🔵)'))
+@BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM, pattern=r'(?i)(?!.*xxx)'))
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
