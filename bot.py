@@ -24,13 +24,18 @@ except Exception as ap:
     print(f"ERROR - {ap}")
     exit(1)
 
-@BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM, pattern=r'(?i)(?!.*✅✅✅ GREEN ✅✅✅)'))
+@BotzHubUser.on(events.NewMessage(incoming=True, chats=FROM, pattern=r'(?i)(?!.*🔵🔵 Entrada Finalizada 🔵🔵)'))
 async def sender_bH(event):
     message = event.message
     # substituir textos específicos antes de encaminhar a mensagem
-    if '🔔 OPORTUNIDADE IDENTIFICADA 🔔' in message.text:
-        message.text = message.text.replace('🔔 OPORTUNIDADE IDENTIFICADA 🔔', '**✅OPORTUNIDADE IDENTIFICADA✅**')
-        
+    if '➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa' in message.text:
+        message.text = message.text.replace('➡️ ENTRE AQUI : https://fwd.cx/HMY5zeG8hZYa', '👉🏻[CRIE SUA CONTA](https://www.bbrbet.com/c-zpqVT4UZ?lang=pt)👈🏻')
+    if '🟢🟢Entrada Confirmada🟢🟢' in message.text:
+        message.text = message.text.replace('🟢🟢Entrada Confirmada🟢🟢', '**✅ ENTRADA CONFIRMADA**')
+    if '🟢Entrar' in message.text:
+        message.text = message.text.replace('🟢Entrar', '🟢 ENTRADA')
+    if '⏰ Válido até às' in message.text:
+        message.text = message.text.replace('⏰ Válido até às', '⏰ Válido até')    
         
     # Loop over the target chats
     for i in TO:
@@ -46,7 +51,7 @@ async def sender_bH(event):
                 original_message = message
 
             # Modify the original message to include the new link
-            original_message.text = original_message.text.replace("https://fwd.cx/lmBBuPRNuDaQ", "https://www.bbrbet.com/?p=lnkl32RW&lang=pt")
+            original_message.text = original_message.text.replace("https://fwd.cx/lmBBuPRNuDaQ", "https://m.estrelabet.com/en/games/casino/detail/normal/7791")
 
             # Forward the modified message to the target chat
             await BotzHubUser.send_message(i, original_message)
