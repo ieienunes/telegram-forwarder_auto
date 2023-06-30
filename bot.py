@@ -51,7 +51,7 @@ async def sender_bH(event):
                 original_message = message
 
             # Modify the original message to include the new link
-            original_message.text = original_message.text.replace("https://fwd.cx/lmBBuPRNuDaQ", "https://m.estrelabet.com/en/games/casino/detail/normal/7791")
+            original_message.text = original_message.text.replace("https://fwd.cx/lmBBuPRNuDaQ", "https://www.bbrbet.com/c-zpqVT4UZ?lang=pt")
 
             # Forward the modified message to the target chat
             await BotzHubUser.send_message(i, original_message)
